@@ -1,8 +1,31 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen, fireEvent } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("button has the correct initial color", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const button = screen.getByRole("button", { name: "Change to blue" });
+  // expect the background color to be red
+  expect(button).toHaveStyle({
+    backgroundColor: "red",
+  });
+  // click button
+  fireEvent.click(button);
+  // expect the background color to be blue
+  expect(button).toHaveStyle({
+    backgroundColor: "blue",
+  });
+
+  // expect the button text to be 'Change to red'
+  expect(button.textContent).toBe("Change to red");
+});
+
+test("initial conditions", () => {
+  render(<App />);
+  const button = screen.getByRole("button", { name: "Change to blue" });
+  const checkbox = screen.getByRole("checkbox");
+  // check that button starts out enabled
+  expect(button).toBeEnabled();
+
+  // check that the checkbox starts out unchecked
+  expect(checkbox).not.toBeChecked();
 });
