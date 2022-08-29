@@ -6,9 +6,10 @@ export function addSpaceBeforeCamel(string) {
 }
 
 function App() {
-  const [color, setColor] = useState("red");
+  const [color, setColor] = useState("MediumVioletRed");
   const [disabled, setDisabled] = useState(false);
-  const newColor = color === "red" ? "blue" : "red";
+  const newColor =
+    color === "MediumVioletRed" ? "MidnightBlue" : "MediumVioletRed";
 
   useEffect(() => {
     document.title = `The color is ${color}`;
@@ -21,7 +22,7 @@ function App() {
         onClick={() => setColor(newColor)}
         disabled={disabled}
       >
-        Change to {newColor}
+        Change to {addSpaceBeforeCamel(newColor)}
       </button>
       <label htmlFor="disable-button-checkbox">Disable button</label>
       <input

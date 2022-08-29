@@ -3,25 +3,29 @@ import App, { addSpaceBeforeCamel } from "./App";
 
 test("button has the correct initial color", () => {
   render(<App />);
-  const button = screen.getByRole("button", { name: "Change to blue" });
-  // expect the background color to be red
+  const button = screen.getByRole("button", {
+    name: "Change to Midnight Blue",
+  });
+  // expect the background color to be MediumVioletRed
   expect(button).toHaveStyle({
-    backgroundColor: "red",
+    backgroundColor: "MediumVioletRed",
   });
   // click button
   fireEvent.click(button);
-  // expect the background color to be blue
+  // expect the background color to be MidnightBlue
   expect(button).toHaveStyle({
-    backgroundColor: "blue",
+    backgroundColor: "MidnightBlue",
   });
 
-  // expect the button text to be 'Change to red'
-  expect(button.textContent).toBe("Change to red");
+  // expect the button text to be 'Change to Medium Violet Red'
+  expect(button.textContent).toBe("Change to Medium Violet Red");
 });
 
 test("initial conditions", () => {
   render(<App />);
-  const button = screen.getByRole("button", { name: "Change to blue" });
+  const button = screen.getByRole("button", {
+    name: "Change to Midnight Blue",
+  });
   const checkbox = screen.getByRole("checkbox");
   // check that button starts out enabled
   expect(button).toBeEnabled();
